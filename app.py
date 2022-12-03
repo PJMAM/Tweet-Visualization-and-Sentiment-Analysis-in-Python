@@ -113,7 +113,7 @@ app.layout = html.Div(children=[
     )
     ], style={'padding': '20px'})
 
-cred = credentials.Certificate('.//src//keys//new-admin.json')
+cred = credentials.Certificate('D:\GITHUB\Tweet-Visualization-and-Sentiment-Analysis-in-Python\src\keys\key-firebase.json')
 # Initialize the app with a service account, granting admin privileges
 firebase_admin.initialize_app(cred, {
     'databaseURL': "https://twitter-e939f-default-rtdb.firebaseio.com/"
@@ -338,7 +338,7 @@ def update_graph_bottom_live(n):
     for key,val in docs.items():
         data.append(val)
         
-    df=pd.DataFrame(data)
+    df=pd.json_normalize(data)
 
     # Convert UTC into PDT
     df['created_at'] = pd.to_datetime(df['created_at'])
