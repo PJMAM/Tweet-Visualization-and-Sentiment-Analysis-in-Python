@@ -131,8 +131,8 @@ def update_graph_live(n):
     for key,val in docs.items():
         data.append(val)
         
-    df=pd.json_normalize(data)
-
+    # df=pd.json_normalize(data)
+    df=pd.DataFrame(data)
     # Convert UTC into PDT
     df['created_at'] = pd.to_datetime(df['created_at'])
 
